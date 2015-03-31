@@ -1,5 +1,5 @@
 export DOTTRHOME=$(/bin/readlink -f ${0%/*})
 
-pan () {
+fry () {
     source $DOTTRHOME/yolk/"$@".zsh
 }
