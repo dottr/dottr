@@ -4,9 +4,18 @@
 
 git-onstage() {
     git status
-    git stash save --keep-index --include-untracked
-    $@
-    rc=$?
-    git stash pop
+
+    if u="$(git status --porcelain)" && test -z "$u"; then
+        # clean => just run
+        $@
+        rc=$?
+    else
+        # unstaged/untracked changes => stash + run
+        git stash save --keep-index --include-untracked
+        $@
+        rc=$?
+        git stash pop
+    fi
+
     return $rc
 }
