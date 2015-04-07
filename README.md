@@ -16,6 +16,12 @@ fry ncserve
 fry alias-usage-analysis
 ```
 
+#### Tab completion
+You can activate tab completion for all zsh-yolks with:
+```sh
+fry completion
+```
+
 ## Contribute
 Please send in pull requests for your `yolks` and spread the word. It's also nice to include some words in the files about the usage and possibly the authors/sources. If you have any problem or idea, please [open an issue](https://github.com/dottr/dottr/issues/new).
 
