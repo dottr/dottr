@@ -8,7 +8,7 @@
 # - detect commands after pipes
 # - special case for git commands?
 
-alias commandhistory='history | sed "s/^ *[0-9]* *//" | grep -P "^[\w\\-]+([^\w/=@]|$)" -o | grep -P "^[\w\\-]+" -o'
+alias commandhistory='fc -l 1 | sed "s/^ *[0-9]* *//" | grep -P "^[\w\\-]+([^\w/=@]|$)" -o | grep -P "^[\w\\-]+" -o'
 alias listaliases='alias | sed "s/^alias //" | cut -d "=" -f 1'
 alias listfunctions='print -l ${(ok)functions}' # only works in zsh, bash: compgen -A function
 alias listselfdefined='(listaliases; listfunctions)'
