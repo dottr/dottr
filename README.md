@@ -24,6 +24,8 @@ fry completion
 
 ## Contribute
 Please send in pull requests for your `yolks` and spread the word. It's also nice to include some words in the files about the usage and possibly the authors/sources. If you have any problem or idea, please [open an issue](https://github.com/dottr/dottr/issues/new).
+### Style
+Write the names of the yolks in `kebap-case`.
 
 ## Somebody out there?
 When we started this project we didn't know an alternative doing exactly this. If you know one, please tell us in the issues. We are interested to merge.
