@@ -5,7 +5,8 @@
 vim() {
     declare -a args
     let fcount=0
-    hit_dashdash=
+    local -a lines cols
+    local hit_dashdash=
     for arg in "$@" ;do
         if [[ "$arg" =~ ^- && ! "$hit_dashdash" ]] ;then
             args+=("$arg")
@@ -17,7 +18,6 @@ vim() {
             args+=(`echo $arg | cut -d: -f1`)
             lines[$fcount]=`echo $arg | cut -d: -f2`
             cols[$fcount]=`echo $arg | cut -d: -f3`
-            cols[$fcount]=${cols[$fcount]:-0} # if no column is given, use 0
         else
             args+=("$arg")
         fi
@@ -25,9 +25,16 @@ vim() {
     script=$'set nostartofline\n' # keep column position when switching buffers
     script+=$'blast\n'
     while [[ $fcount -gt 1 ]] ;do
-        script+="call cursor(${lines[$fcount]},${cols[$fcount]})"'\n'
+        if [[ -n "$lines[$fcount]" ]]; then
+            if [[ -n "$cols[$fcount]" ]]; then
+                script+="call cursor(${lines[$fcount]},${cols[$fcount]})"'\n'
+            else
+                script+="normal ${lines[$fcount]}G_"'\n'
+            fi
+        fi
         let fcount-=1
         [[ $fcount -gt 1 ]] && script+=$'bprev\n'
     done
+    echo $script
     /usr/bin/vim -S <(echo "$script") "${args[@]}"
 }
