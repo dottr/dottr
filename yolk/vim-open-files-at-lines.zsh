@@ -35,6 +35,5 @@ vim() {
         let fcount-=1
         [[ $fcount -gt 1 ]] && script+=$'bprev\n'
     done
-    echo $script
     /usr/bin/vim -S <(echo "$script") "${args[@]}"
 }
