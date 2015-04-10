@@ -22,9 +22,10 @@ vim() {
             args+=("$arg")
         fi
     done
-    script=$'blast\n'
+    script=$'set nostartofline\n' # keep column position when switching buffers
+    script+=$'blast\n'
     while [[ $fcount -gt 1 ]] ;do
-        script+=":call cursor(${lines[$fcount]},${cols[$fcount]})"'\n'
+        script+="call cursor(${lines[$fcount]},${cols[$fcount]})"'\n'
         let fcount-=1
         [[ $fcount -gt 1 ]] && script+=$'bprev\n'
     done
