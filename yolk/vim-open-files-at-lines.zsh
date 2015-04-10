@@ -1,4 +1,5 @@
-# vim file:34 otherfile:1337 -> Open files at respective lines. And in tabs!
+# open files at respective lines and optionally columns
+# example: vim file:34 otherfile:1337:5
 # https://gist.github.com/xim/6123691
 
 vim() {
@@ -12,19 +13,20 @@ vim() {
             continue
         fi
         let fcount+=1
-        if [[ "$arg" =~ : && -e "${arg%:*}" && "${arg##*:}" =~ ^[0-9]+*$ ]] ;then
-            args+=("${arg%:*}")
-            lines[$fcount]=${arg##*:}
+        if [[ "$arg" =~ : && -e `echo $arg | cut -d: -f1` && `echo $arg | cut -d: -f2` =~ ^[0-9]+*$ ]] ;then
+            args+=(`echo $arg | cut -d: -f1`)
+            lines[$fcount]=`echo $arg | cut -d: -f2`
+            cols[$fcount]=`echo $arg | cut -d: -f3`
+            cols[$fcount]=${cols[$fcount]:-0} # if no column is given, use 0
         else
             args+=("$arg")
         fi
     done
     script=$'blast\n'
-    while [[ $fcount -gt 0 ]] ;do
-        script+="${lines[$fcount]}"$'\n'
+    while [[ $fcount -gt 1 ]] ;do
+        script+=":call cursor(${lines[$fcount]},${cols[$fcount]})"'\n'
         let fcount-=1
-        [[ $fcount -gt 0 ]] && script+=$'bprev\n'
+        [[ $fcount -gt 1 ]] && script+=$'bprev\n'
     done
-    script+=$'bfirst\n'
     /usr/bin/vim -S <(echo "$script") "${args[@]}"
 }
