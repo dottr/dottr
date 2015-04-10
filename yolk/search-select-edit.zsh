@@ -2,12 +2,10 @@
 # depends on vim-open-files-at-lines (vim filename:5 filename:2 ...)
 # TODO: use custom replacements for ag / vim / fzf
 
-search-select-edit() {
-    results=$(ag --filename --noheading --numbers --column --nobreak --color -S $@)
-    selected=$(echo $results | fzf --ansi --multi)
+search-select-edit () {
+    results=$(ag --filename --noheading --numbers --column --nobreak --color -S $@) 
+    selected=$(echo -E $results | fzf --ansi --multi --no-sort --tac) 
     [[ -z "$selected" ]] && return 0
-
-    uniquefileswithlines=$(echo $selected | sed 's/\(.\+\)\:\([0-9]\+\)\:.*/\2 \1/' | uniq --skip-fields=1 | sed 's/\([0-9]\+\) \(.\+\)$/\2:\1/')
-
-    eval "vim $(echo $uniquefileswithlines | xargs -I'{}' echo -n '"{}" ')"
+    uniquefileswithlines=$(echo -E $selected | tac | sed '$!N; /^\([^:]*\):.*\n\1:.*$/!P; D' | tac | cut -d: -f1-3) 
+    eval "vim $(echo -E $uniquefileswithlines | xargs -I'{}' echo -E -n '"{}" ')"
 }
