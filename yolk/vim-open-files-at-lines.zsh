@@ -20,7 +20,6 @@ vim() {
     done
     script=$'set nostartofline\n' # keep column position when switching buffers
     script+=$'blast\n'
-    echo $fcount
     while [[ $fcount -gt 0 ]] ;do
         if [[ -n "$lines[$fcount]" ]]; then
             if [[ -n "$cols[$fcount]" ]]; then
