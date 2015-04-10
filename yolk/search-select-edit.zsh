@@ -5,6 +5,9 @@
 search-select-edit() {
     results=$(ag --filename --noheading --numbers --nobreak --color -S $@)
     selected=$(echo $results | fzf --ansi --multi)
+    [[ -z "$selected" ]] && return 0
+
     uniquefileswithlines=$(echo $selected | sed 's/\(.\+\)\:\([0-9]\+\)\:.*/\2 \1/' | uniq --skip-fields=1 | sed 's/\([0-9]\+\) \(.\+\)$/\2:\1/')
+
     eval "vim $(echo $uniquefileswithlines | xargs -I'{}' echo -n '"{}" ')"
 }
