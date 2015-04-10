@@ -3,7 +3,7 @@
 # TODO: use custom replacements for ag / vim / fzf
 
 search-select-edit() {
-    results=$(ag --filename --noheading --numbers --nobreak --color -S $@)
+    results=$(ag --filename --noheading --numbers --column --nobreak --color -S $@)
     selected=$(echo $results | fzf --ansi --multi)
     [[ -z "$selected" ]] && return 0
 
