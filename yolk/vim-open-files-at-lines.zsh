@@ -6,13 +6,9 @@ vim() {
     declare -a args
     let fcount=0
     local -a lines cols
-    local hit_dashdash=
     for arg in "$@" ;do
-        if [[ "$arg" =~ ^- && ! "$hit_dashdash" ]] ;then
-            args+=("$arg")
-            [[ "$arg" = "--" ]] && hit_dashdash=1
-            continue
-        fi
+        filename=$(echo -E $arg | grep -oE "^[^:]*")
+        [[ -f "$filename" ]] || continue # check if arg is an existing file
         let fcount+=1
         if [[ "$arg" =~ : && -e `echo $arg | cut -d: -f1` && `echo $arg | cut -d: -f2` =~ ^[0-9]+*$ ]] ;then
             args+=(`echo $arg | cut -d: -f1`)
@@ -24,7 +20,8 @@ vim() {
     done
     script=$'set nostartofline\n' # keep column position when switching buffers
     script+=$'blast\n'
-    while [[ $fcount -gt 1 ]] ;do
+    echo $fcount
+    while [[ $fcount -gt 0 ]] ;do
         if [[ -n "$lines[$fcount]" ]]; then
             if [[ -n "$cols[$fcount]" ]]; then
                 script+="call cursor(${lines[$fcount]},${cols[$fcount]})"'\n'
@@ -33,7 +30,7 @@ vim() {
             fi
         fi
         let fcount-=1
-        [[ $fcount -gt 1 ]] && script+=$'bprev\n'
+        [[ $fcount -gt 0 ]] && script+=$'bprev\n'
     done
     /usr/bin/vim -S <(echo "$script") "${args[@]}"
 }
