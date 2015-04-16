@@ -34,6 +34,26 @@ You can activate tab completion for all zsh-yolks with:
 fry completion
 ```
 
+## git brunch
+### Installation
+You need to put `git-fry` in your path (for example in `.profile`):
+```
+export PATH="$PATH:[path to where you cloned dottr]/pan.git"
+```
+
+### Usage
+Now you can execute predifined aliases with:
+```sh
+git fry word-based-diff HEAD~1
+```
+
+Create custom aliases in your `.gitconfig`:
+```ini
+[alias]
+    dw = fry word-based-diff
+    dws = fry word-based-diff --staged
+```
+
 ## Contribute
 Please send in pull requests for your `yolks` and spread the word. It's also nice to include some words in the files about the usage and possibly the authors/sources. If you have any problem or idea, please [open an issue](https://github.com/dottr/dottr/issues/new).
 ### Style
