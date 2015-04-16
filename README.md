@@ -3,19 +3,19 @@ A place for dotfile snippets (here: `yolks`) which are not worth creating a new 
 
 ## ZSH - The Teflon Pan
 ### Installation
-Clone this repo and source the `pan.zsh` once in your `.zshrc` to get the command `fry`:
+Clone this repo and source the `pan.zsh` once in your `~/.zshrc` to get the command `fry`:
 ```sh
 source [path to where you cloned dottr]/pan.zsh
 ```
 
-If you are using [zgen](https://github.com/tarjoilija/zgen), load `dottr` with this line in your `.zshrc`:
+If you are using [zgen](https://github.com/tarjoilija/zgen), load `dottr` with this line in your `~/.zshrc`:
 ```sh
 zgen load dottr/dottr
 ```
 
 ### Usage
 
-Then simply declare every snippet you want to use with `fry` in your `.zshrc` or activate it on demand with:
+Then simply declare every snippet you want to use with `fry` in your `~/.zshrc` or activate it on demand with:
 ```sh
 fry ncserve
 fry alias-usage-analysis
@@ -36,7 +36,7 @@ fry completion
 
 ## git brunch
 ### Installation
-You need to put `git-fry` in your path (for example in `.profile`):
+You need to put `git-fry` in your path (for example in `~/.profile`):
 ```
 export PATH="$PATH:[path to where you cloned dottr]/pan.git"
 ```
@@ -47,7 +47,7 @@ Now you can execute predifined aliases with:
 git fry word-based-diff HEAD~1
 ```
 
-Create custom aliases in your `.gitconfig`:
+Create custom aliases in your `~/.gitconfig`:
 ```ini
 [alias]
     dw = fry word-based-diff
@@ -59,5 +59,5 @@ Please send in pull requests for your `yolks` and spread the word. If you find a
 ### Style
 Write the names of the yolks in `kebap-case`.
 
-## Somebody out there?
+## Anybody out there?
 When we started this project we didn't know an alternative doing exactly this. If you know one, please tell us in the issues. We are interested to merge.
