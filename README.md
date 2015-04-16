@@ -55,7 +55,7 @@ Create custom aliases in your `.gitconfig`:
 ```
 
 ## Contribute
-Please send in pull requests for your `yolks` and spread the word. It's also nice to include some words in the files about the usage and possibly the authors/sources. If you have any problem or idea, please [open an issue](https://github.com/dottr/dottr/issues/new).
+Please send in pull requests for your `yolks` and spread the word. If you find a useful snippet, just add it to dottr - so others can benefit from it, too. It's also nice to include some words in the files about the usage and possibly the authors/sources. If you have any problem or idea, please [open an issue](https://github.com/dottr/dottr/issues/new).
 ### Style
 Write the names of the yolks in `kebap-case`.
 
