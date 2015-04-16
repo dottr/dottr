@@ -1,22 +1,34 @@
 # dottr
 A place for dotfile snippets (here: `yolks`) which are not worth creating a new repository but are still non-trivial. Or with other words: Snippets which needed a good amount of time to create and tune. Each `yolk` is simply sourced using the `fry` command, which exists for every environment (here: `pan`). With this approach, users (here: `chefs`) can share and improve their `yolks` together and keep their dotfiles (here: `kitchen`) clean. Tasty.
 
-## Usage
-1. Clone this repo.
-2. Follow the instructions for every `pan` you like.
-
-### ZSH - The Teflon Pan
-Source the `pan.zsh` once in your `.zshrc` to get the command `fry`:
+## ZSH - The Teflon Pan
+### Installation
+Clone this repo and source the `pan.zsh` once in your `.zshrc` to get the command `fry`:
 ```sh
 source [path to where you cloned dottr]/pan.zsh
 ```
+
+If you are using [zgen](https://github.com/tarjoilija/zgen), load `dottr` with this line in your `.zshrc`:
+```sh
+zgen load dottr/dottr
+```
+
+### Usage
+
 Then simply declare every snippet you want to use with `fry` in your `.zshrc` or activate it on demand with:
 ```sh
 fry ncserve
 fry alias-usage-analysis
 ```
 
-#### Tab completion
+The `yolks` have long names in order to avoid name clashes and encourage you to define your own aliases. Here are some examples:
+
+```sh
+alias imv='interactive-mv'
+alias gsc='git-select-commit'
+```
+
+### Tab completion
 You can activate tab completion for all zsh-yolks with:
 ```sh
 fry completion
