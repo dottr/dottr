@@ -1,6 +1,13 @@
 # dottr
 A place for dotfile snippets (here: `yolks`) which are not worth creating a new repository but are still non-trivial. Or with other words: Snippets which needed a good amount of time to create and tune. Each `yolk` is simply sourced using the `fry` command, which exists for every environment (here: `pan`). With this approach, users (here: `chefs`) can share and improve their `yolks` together and keep their dotfiles (here: `kitchen`) clean. Tasty.
 
+This repository is a collection of snippets, eachof which not worth its own repository, but together they are.
+Snippets can be activated individually through the use of our command-line tool called `fry`.
+
+The goal of fry is not to be a mere command-line tool however, but rather it is meant to be an extension point allowing users to extend existing commands.
+Consider:
+git fry word-based-diff
+
 ## ZSH - The Teflon Pan
 ### Installation
 Clone this repo and source the `pan.zsh` once in your `~/.zshrc` to get the command `fry`:
