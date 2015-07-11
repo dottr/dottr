@@ -1,5 +1,5 @@
 # opens manually selected search results in editor
-# depends on vim-open-files-at-lines (vim filename:5 filename:2 ...)
+# depends on: https://github.com/bogado/file-line.git
 # TODO: use custom replacements for ag / vim / fzf
 
 search-select-edit () {
