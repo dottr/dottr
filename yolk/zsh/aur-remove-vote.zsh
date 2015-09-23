@@ -1,10 +1,10 @@
 # Remove given package(s) 
 # If the package is in the local installed packages (e.g. AUR)
 # checks if you voted for it and prompts for unvoting it 
-# prefix of subfunctions: "rv_" for remove-vote
+# prefix of subfunctions: "arv_" for aur-remove-vote
 # Query local packages is much faster than pacman -Si
 
-remove-vote() { 
+aur-remove-vote() { 
 	if (( $# == 0 )); then
 		echo "No parameter given"
 		echo "Usage: $0 packet [packet2, ...]"
@@ -31,7 +31,7 @@ remove-vote() {
 	return 0
 }
 
-rv_promt-vote() {
+arv_promt-vote() {
 	local ans
 	local removal="$1"
 	if aurvote -c "$removal" | grep -q already; then
