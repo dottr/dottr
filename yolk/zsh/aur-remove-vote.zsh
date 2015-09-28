@@ -18,7 +18,7 @@ aur-remove-vote() {
 
 	for pack in $(pacman -Qem | awk '{print $1}'); do aur+=("$pack"); done
 
-	#yaourt -Rns "$args";
+	yaourt -Rns "$args";
 	for removal in $args; do
 		for pack in $aur; do
 			if [[ "$pack" == "$removal" ]]; then
