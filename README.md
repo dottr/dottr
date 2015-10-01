@@ -28,6 +28,11 @@ alias imv='interactive-mv'
 alias gsc='git-select-commit'
 ```
 
+To get an overview, you can list all available yolks along with their description:
+```sh
+fry list-yolks
+```
+
 ### Tab completion
 You can activate tab completion for all zsh-yolks with:
 ```sh
