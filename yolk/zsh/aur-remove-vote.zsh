@@ -18,11 +18,11 @@ aur-remove-vote() {
 
 	for pack in $(pacman -Qem | awk '{print $1}'); do aur+=("$pack"); done
 
-	yaourt -Rns "$args";
+	yaourt -Rns "$@";
 	for removal in $args; do
 		for pack in $aur; do
 			if [[ "$pack" == "$removal" ]]; then
-				rav_promt-vote "$removal"
+				arv_prompt-vote "$removal"
 				break 
 			fi
 		done
@@ -31,7 +31,7 @@ aur-remove-vote() {
 	return 0
 }
 
-arv_promt-vote() {
+arv_prompt-vote() {
 	local ans
 	local removal="$1"
 	if aurvote -c "$removal" | grep -q already; then
