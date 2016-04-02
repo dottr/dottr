@@ -2,6 +2,22 @@
 # taken from: http://git.grml.org/?p=grml-etc-core.git;a=blob_plain;f=etc/skel/.zshrc;hb=HEAD
 # usage: bind2maps emacs viins vicmd -- "Home" beginning-of-line
 
+# setup keys!
+#   typeset -A key
+#   key=(
+#   Home     "${terminfo[khome]}"
+#   End      "${terminfo[kend]}"
+#   Insert   "${terminfo[kich1]}"
+#   Delete   "${terminfo[kdch1]}"
+#   Up       "${terminfo[kcuu1]}"
+#   Down     "${terminfo[kcud1]}"
+#   Left     "${terminfo[kcub1]}"
+#   Right    "${terminfo[kcuf1]}"
+#   PageUp   "${terminfo[kpp]}"
+#   PageDown "${terminfo[knp]}"
+#   BackTab  "${terminfo[kcbt]}"
+#   )
+
 bind2maps () {
     local i sequence widget
     local -a maps
