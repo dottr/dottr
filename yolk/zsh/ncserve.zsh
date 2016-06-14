@@ -44,7 +44,7 @@ nclisten () {
 ipfsserve() {
     pw=$(pwgen -s 20 1)
     bytes=$(du -cb "$@" | tail -n1 | awk '{print $1}')
-    hash=$(tar -cvf - testdir | aespipe -e AES256 -p3 3< <(echo $pw) | pv -s $bytes | ipfs add -p -q)
+    hash=$(tar -cvf - "$@" | aespipe -e AES256 -p3 3< <(echo $pw) | pv -s $bytes | ipfs add -p -q)
     echo "ipfs cat $hash | aespipe -e AES256 -p3 -d 3< <(echo $pw) | pv -s $bytes | tar -kxv"
 }
 
