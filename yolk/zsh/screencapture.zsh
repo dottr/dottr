@@ -6,11 +6,13 @@
 screencapture() {
     # Audio: Mono, Vorbis(5)
     # Video: Display :0.0, Sreen Resolution, 25fps, H264, default quality:23
-    ffmpeg -y -f alsa -ac 1 -i pulse -f x11grab -s `xdpyinfo | grep 'dimensions:'|awk '{print $2}'` -i $DISPLAY -acodec libvorbis -aq 5 -vcodec libx264 -crf 23 -preset superfast -r 25 capture-$(date +"%Y-%m-%d-%H-%M-%S").mkv
+    # -pix_fmt yuv420p makes it playable by quicktime
+    ffmpeg -y -f alsa -ac 1 -i pulse -f x11grab -s `xdpyinfo | grep 'dimensions:'|awk '{print $2}'` -i $DISPLAY -acodec libvorbis -aq 5 -vcodec libx264 -pix_fmt yuv420p -crf 23 -preset superfast -r 25 capture-$(date +"%Y-%m-%d-%H-%M-%S").mkv
 }
 
 screencaptureHQ() {
     # Audio: Mono, Vorbis(5)
     # Video: Display :0.0, Sreen Resolution, 25fps, H264, default quality:18
-    ffmpeg -y -f alsa -ac 1 -i pulse -f x11grab -s `xdpyinfo | grep 'dimensions:'|awk '{print $2}'` -i $DISPLAY -acodec libvorbis -aq 5 -vcodec libx264 -crf 18 -preset superfast -r 30 capture-$(date +"%Y-%m-%d-%H-%M-%S").mkv
+    # -pix_fmt yuv420p makes it playable by quicktime
+    ffmpeg -y -f alsa -ac 1 -i pulse -f x11grab -s `xdpyinfo | grep 'dimensions:'|awk '{print $2}'` -i $DISPLAY -acodec libvorbis -aq 5 -vcodec libx264 -pix_fmt yuv420p -crf 18 -preset superfast -r 30 capture-$(date +"%Y-%m-%d-%H-%M-%S").mkv
 }
