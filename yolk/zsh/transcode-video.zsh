@@ -6,7 +6,8 @@
 transcode-video() {
     # high audio quality: Vorbis(6)
     # default video quality: H264(23)
-    ffmpeg -i "$1" -acodec libvorbis -aq 6 -vcodec libx264 -crf 23 -preset slow "$1.mkv"
+    # -pix_fmt yuv420p makes it playable by quicktime
+    ffmpeg -i "$1" -acodec libvorbis -aq 6 -vcodec libx264 -pix_fmt yuv420p -crf 23 -preset slow "$1.mkv"
 }
 
 transcode-video-gif() {
