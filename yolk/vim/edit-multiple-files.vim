@@ -1,11 +1,11 @@
 " edit multiple files at once.
-" Usage: :Edit a.vim b.vim *.rb
+" Usage: :E a.vim b.vim *.rb
 " Source: http://vim.wikia.com/wiki/Load_multiple_files_with_a_single_command
 
 command! -complete=file -nargs=* Etab call s:ETW('tabnew', <f-args>)
 command! -complete=file -nargs=* Enew call s:ETW('new', <f-args>)
 command! -complete=file -nargs=* Evnew call s:ETW('vnew', <f-args>)
-command! -complete=file -nargs=* Edit call s:ETW('edit', <f-args>)
+command! -complete=file -nargs=* E call s:ETW('edit', <f-args>)
 function! s:ETW(what, ...)
     if empty(a:000)
         silent! edit
@@ -23,3 +23,6 @@ function! s:ETW(what, ...)
         endif
     endfor
 endfunction
+
+" overwrite :e with :E
+cabbrev e <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'E' : 'e')<CR>
