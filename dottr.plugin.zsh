@@ -1,3 +1,3 @@
-export DOTTRHOME=$(dirname "$(/bin/readlink -f "$0")")
+export DOTTRHOME=$(dirname "$(readlink -f "$0")")
 
 source $DOTTRHOME/pan.zsh

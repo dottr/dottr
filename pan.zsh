@@ -1,4 +1,4 @@
-export DOTTRHOME=$(dirname "$(/bin/readlink -f "$0")")
+export DOTTRHOME=$(dirname "$(readlink -f "$0")")
 
 fry () {
     yolk_file=$DOTTRHOME/yolk/zsh/"$@".zsh
