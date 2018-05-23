@@ -4,7 +4,6 @@
 # dependencies: msgpack-tools, netcat
 
 nvim-rpc() {
-    echo $1 $2
     # usage: nvim-rpc <socket> <command>
     # requires: https://github.com/ludocode/msgpack-tools and netcat
 
