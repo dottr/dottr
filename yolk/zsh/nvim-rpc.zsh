@@ -10,7 +10,7 @@ nvim-rpc() {
     # https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md
     # msgpack-rpc is an array of [type, msgid, method, params]
     # encode and send it to nvims unix socket via netcat
-    echo "[0,0,\"vim_command\",[\"$2\"]]" | json2msgpack | nc -U $1 -q0
+    echo "[0,0,\"vim_command\",[\"$2\"]]" | json2msgpack | nc -U $1 &
 }
 
 nvim-rpc-all() {
