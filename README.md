@@ -1,3 +1,5 @@
+# Archived. Please use [Home Manager](https://nix-community.github.io/home-manager/) instead.
+
 # dottr
 A place for dotfile snippets (here: `yolks`) which are not worth creating a new repository but are still non-trivial. Or with other words: Snippets which needed a good amount of time to create and tune. Each `yolk` is simply sourced using the `fry` command, which exists for every environment (here: `pan`). With this approach, users (here: `chefs`) can share and improve their `yolks` together and keep their dotfiles (here: `kitchen`) clean. Tasty.
 
